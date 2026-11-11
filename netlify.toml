@@ -1,0 +1,17 @@
+[build]
+  publish = "."
+
+[[redirects]]
+  from = "/portfolio.html"
+  to = "/portofolio.html"
+  status = 301
+
+[[redirects]]
+  from = "/portfolio"
+  to = "/portofolio.html"
+  status = 301
+
+[[redirects]]
+  from = "/portfolio/"
+  to = "/portofolio.html"
+  status = 301

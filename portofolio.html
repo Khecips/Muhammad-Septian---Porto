@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio - Muhammad Septian</title>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: #0f172a;
+    color: #e2e8f0;
+    line-height: 1.6;
+    font-size: 15px;
+  }
+
+  /* ===== NAVBAR ===== */
+  nav {
+    position: sticky;
+    top: 0;
+    background: rgba(15, 23, 42, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    padding: 14px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+  }
+
+  nav .logo {
+    font-weight: 700;
+    font-size: 17px;
+    color: #38bdf8;
+    letter-spacing: 0.5px;
+  }
+
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 22px;
+    font-size: 14px;
+  }
+
+  nav ul a {
+    color: #cbd5e1;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  nav ul a:hover { color: #38bdf8; }
+
+  /* ===== HERO ===== */
+  .hero {
+    padding: 70px 30px 60px;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    max-width: 1100px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+  }
+
+  .hero-photo {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid #38bdf8;
+    box-shadow: 0 0 40px rgba(56, 189, 248, 0.4);
+    flex-shrink: 0;
+  }
+
+  .hero-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+  }
+
+  .hero-text h1 {
+    font-size: 38px;
+    color: #fff;
+    margin-bottom: 8px;
+    line-height: 1.2;
+  }
+
+  .hero-text h1 span { color: #38bdf8; }
+
+  .hero-text .role {
+    font-size: 17px;
+    color: #94a3b8;
+    margin-bottom: 18px;
+    letter-spacing: 0.5px;
+  }
+
+  .hero-text .bio {
+    font-size: 14.5px;
+    color: #cbd5e1;
+    max-width: 600px;
+    margin-bottom: 22px;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .btn-primary {
+    background: #38bdf8;
+    color: #0f172a;
+  }
+
+  .btn-primary:hover { background: #0ea5e9; transform: translateY(-2px); }
+
+  .btn-outline {
+    border: 1.5px solid #38bdf8;
+    color: #38bdf8;
+  }
+
+  .btn-outline:hover { background: rgba(56, 189, 248, 0.1); transform: translateY(-2px); }
+
+  /* ===== STATS ===== */
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 16px;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 30px 50px;
+  }
+
+  .stat-card {
+    background: #1e293b;
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .stat-card .num {
+    font-size: 28px;
+    font-weight: 700;
+    color: #38bdf8;
+    display: block;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .stat-card .label {
+    font-size: 12.5px;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  /* ===== SECTION ===== */
+  section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 50px 30px;
+  }
+
+  section h2 {
+    font-size: 24px;
+    color: #fff;
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
+  }
+
+  section .subtitle {
+    font-size: 14px;
+    color: #94a3b8;
+    margin-bottom: 28px;
+  }
+
+  section h2::before {
+    content: "";
+    display: inline-block;
+    width: 4px;
+    height: 22px;
+    background: #38bdf8;
+    margin-right: 10px;
+    vertical-align: -3px;
+    border-radius: 2px;
+  }
+
+  /* ===== PROJECTS ===== */
+  .projects {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+  }
+
+  .project-card {
+    background: #1e293b;
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 12px;
+    padding: 22px;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .project-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(56, 189, 248, 0.5);
+    box-shadow: 0 10px 30px rgba(56, 189, 248, 0.15);
+  }
+
+  .project-icon {
+    width: 42px;
+    height: 42px;
+    background: rgba(56, 189, 248, 0.15);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    margin-bottom: 14px;
+    color: #38bdf8;
+  }
+
+  .project-card h3 {
+    font-size: 16px;
+    color: #fff;
+    margin-bottom: 6px;
+  }
+
+  .project-card .company {
+    font-size: 12px;
+    color: #38bdf8;
+    margin-bottom: 12px;
+    font-weight: 600;
+  }
+
+  .project-card p {
+    font-size: 13.5px;
+    color: #cbd5e1;
+    margin-bottom: 14px;
+  }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .tag {
+    font-size: 11px;
+    background: rgba(56, 189, 248, 0.1);
+    color: #7dd3fc;
+    padding: 3px 10px;
+    border-radius: 20px;
+    border: 1px solid rgba(56, 189, 248, 0.2);
+  }
+
+  /* ===== SKILLS ===== */
+  .skills-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 14px;
+  }
+
+  .skill-cat {
+    background: #1e293b;
+    border-radius: 10px;
+    padding: 18px;
+    border: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .skill-cat h4 {
+    font-size: 14px;
+    color: #38bdf8;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .skill-cat ul {
+    list-style: none;
+  }
+
+  .skill-cat li {
+    font-size: 13.5px;
+    color: #cbd5e1;
+    padding: 4px 0 4px 18px;
+    position: relative;
+  }
+
+  .skill-cat li::before {
+    content: "▸";
+    color: #38bdf8;
+    position: absolute;
+    left: 0;
+  }
+
+  /* ===== TIMELINE ===== */
+  .timeline {
+    position: relative;
+    padding-left: 30px;
+    border-left: 2px solid rgba(56, 189, 248, 0.3);
+  }
+
+  .tl-item {
+    position: relative;
+    margin-bottom: 26px;
+  }
+
+  .tl-item::before {
+    content: "";
+    position: absolute;
+    left: -37px;
+    top: 6px;
+    width: 12px;
+    height: 12px;
+    background: #38bdf8;
+    border-radius: 50%;
+    border: 3px solid #0f172a;
+    box-shadow: 0 0 0 2px #38bdf8;
+  }
+
+  .tl-item .period {
+    font-size: 12px;
+    color: #38bdf8;
+    font-weight: 600;
+    margin-bottom: 3px;
+  }
+
+  .tl-item h3 {
+    font-size: 15.5px;
+    color: #fff;
+    margin-bottom: 2px;
+  }
+
+  .tl-item .place {
+    font-size: 13px;
+    color: #94a3b8;
+    margin-bottom: 6px;
+  }
+
+  .tl-item p {
+    font-size: 13px;
+    color: #cbd5e1;
+  }
+
+  /* ===== CONTACT ===== */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 14px;
+  }
+
+  .contact-card {
+    background: #1e293b;
+    border-radius: 10px;
+    padding: 18px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    text-decoration: none;
+    color: #e2e8f0;
+    border: 1px solid rgba(255,255,255,0.06);
+    transition: all 0.2s;
+  }
+
+  .contact-card:hover {
+    border-color: #38bdf8;
+    transform: translateY(-3px);
+  }
+
+  .contact-card .ic {
+    width: 40px;
+    height: 40px;
+    background: rgba(56, 189, 248, 0.15);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    color: #38bdf8;
+    flex-shrink: 0;
+  }
+
+  .contact-card .lbl {
+    font-size: 11.5px;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .contact-card .val {
+    font-size: 13.5px;
+    color: #fff;
+  }
+
+  /* ===== FOOTER ===== */
+  footer {
+    text-align: center;
+    padding: 30px 20px;
+    font-size: 12.5px;
+    color: #64748b;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    margin-top: 30px;
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 700px) {
+    nav { padding: 12px 18px; }
+    nav ul { gap: 14px; font-size: 13px; }
+    nav ul li:nth-child(3),
+    nav ul li:nth-child(4) { display: none; }
+
+    .hero { padding: 50px 20px 40px; gap: 25px; text-align: center; justify-content: center; }
+    .hero-text h1 { font-size: 28px; }
+    .hero-photo { width: 140px; height: 140px; }
+    .hero-actions { justify-content: center; }
+    section { padding: 35px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ================= NAVBAR ================= -->
+<nav>
+  <div class="logo">MS · Portfolio</div>
+  <ul>
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- ================= HERO ================= -->
+<div class="hero" id="about">
+  <div class="hero-photo">
+    <img src="foto.jpeg" alt="Muhammad Septian">
+  </div>
+  <div class="hero-text">
+    <h1>Hi, saya <span>Muhammad Septian</span></h1>
+    <p class="role">IT Operations Staff · Technical Support & Infrastructure</p>
+    <p class="bio">
+      Berpengalaman lebih dari 7 tahun di bidang operasional dan teknis, dengan fokus pada
+      instalasi perangkat IT, troubleshooting user, monitoring jaringan, serta penyelesaian
+      proyek infrastruktur IT di lingkungan Central Kitchen / pabrik.
+    </p>
+    <div class="hero-actions">
+      <a href="#projects" class="btn btn-primary">Lihat Project →</a>
+      <a href="cv.html" class="btn btn-outline">📄 Lihat CV</a>
+    </div>
+  </div>
+</div>
+
+<!-- ================= STATS ================= -->
+<div class="stats">
+  <div class="stat-card">
+    <span class="num">7+</span>
+    <span class="label">Tahun Pengalaman</span>
+  </div>
+  <div class="stat-card">
+    <span class="num">4</span>
+    <span class="label">Perusahaan</span>
+  </div>
+  <div class="stat-card">
+    <span class="num">10+</span>
+    <span class="label">Project IT</span>
+  </div>
+  <div class="stat-card">
+    <span class="num">100%</span>
+    <span class="label">Dedikasi</span>
+  </div>
+</div>
+
+<!-- ================= PROJECTS ================= -->
+<section id="projects">
+  <h2>Project & Kontribusi</h2>
+  <p class="subtitle">Beberapa pekerjaan dan kontribusi teknis yang pernah saya kerjakan.</p>
+
+  <div class="projects">
+
+    <div class="project-card">
+      <div class="project-icon">🏭</div>
+      <h3>Infrastruktur IT Central Kitchen</h3>
+      <div class="company">PT Maju Mapan YIC · 2026</div>
+      <p>Terlibat dalam perencanaan hingga implementasi infrastruktur IT pada area Central Kitchen / pabrik, termasuk instalasi perangkat, penataan jaringan, dan setup perangkat pendukung operasional.</p>
+      <div class="tags">
+        <span class="tag">Infrastruktur</span>
+        <span class="tag">Instalasi</span>
+        <span class="tag">Network</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-icon">🛠️</div>
+      <h3>Troubleshooting User Support</h3>
+      <div class="company">PT Maju Mapan YIC · 2026</div>
+      <p>Menangani keluhan teknis user terkait hardware, software, dan konektivitas jaringan secara responsif, dengan pencatatan dan penyelesaian yang terdokumentasi.</p>
+      <div class="tags">
+        <span class="tag">IT Support</span>
+        <span class="tag">Helpdesk</span>
+        <span class="tag">Troubleshooting</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-icon">📡</div>
+      <h3>Monitoring Jaringan & Perangkat</h3>
+      <div class="company">PT Maju Mapan YIC · 2026</div>
+      <p>Melakukan monitoring jaringan dan perangkat IT untuk memastikan seluruh sistem berjalan stabil, serta meminimalisir downtime yang berdampak pada operasional.</p>
+      <div class="tags">
+        <span class="tag">Monitoring</span>
+        <span class="tag">Network</span>
+        <span class="tag">Uptime</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-icon">📷</div>
+      <h3>Instalasi CCTV & Access Point</h3>
+      <div class="company">PT Maju Mapan YIC · 2026</div>
+      <p>Instalasi dan konfigurasi perangkat CCTV serta access point untuk mendukung kebutuhan keamanan dan konektivitas di area kerja.</p>
+      <div class="tags">
+        <span class="tag">CCTV</span>
+        <span class="tag">Access Point</span>
+        <span class="tag">Instalasi</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-icon">🏧</div>
+      <h3>Operasional Replenishment ATM</h3>
+      <div class="company">Abacus Cash Solution · 2025 – 2026</div>
+      <p>Menangani proses pengisian kas pada mesin ATM serta memastikan seluruh perangkat dan infrastruktur pendukung berfungsi dengan baik selama operasional.</p>
+      <div class="tags">
+        <span class="tag">Operasional</span>
+        <span class="tag">ATM</span>
+        <span class="tag">Akurasi Data</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-icon">🌐</div>
+      <h3>Instalasi & Pemeliharaan Jaringan Pelanggan</h3>
+      <div class="company">Biznet Network · 2021 – 2025</div>
+      <p>Melakukan instalasi, pemeliharaan, dan pengecekan jaringan pelanggan, serta menangani gangguan teknis di lapangan dengan solusi cepat dan tepat.</p>
+      <div class="tags">
+        <span class="tag">Field Technician</span>
+        <span class="tag">Jaringan</span>
+        <span class="tag">Customer Service</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ================= SKILLS ================= -->
+<section id="skills">
+  <h2>Keahlian</h2>
+  <p class="subtitle">Kombinasi kemampuan teknis dan soft skill yang saya kuasai.</p>
+
+  <div class="skills-list">
+
+    <div class="skill-cat">
+      <h4>IT & Technical</h4>
+      <ul>
+        <li>Instalasi Perangkat IT (PC, Printer, CCTV, AP)</li>
+        <li>Troubleshooting Hardware & Software</li>
+        <li>Monitoring Jaringan</li>
+        <li>Konfigurasi Perangkat Jaringan</li>
+        <li>Infrastruktur IT</li>
+      </ul>
+    </div>
+
+    <div class="skill-cat">
+      <h4>Operasional</h4>
+      <ul>
+        <li>Operasional Harian</li>
+        <li>Replenishment & Pengelolaan Kas</li>
+        <li>Pemeliharaan Perangkat</li>
+        <li>Dokumentasi Teknis</li>
+      </ul>
+    </div>
+
+    <div class="skill-cat">
+      <h4>Soft Skill</h4>
+      <ul>
+        <li>Kerja Sama Tim</li>
+        <li>Komunikasi & Pelayanan</li>
+        <li>Disiplin & Tanggung Jawab</li>
+        <li>Manajemen Waktu</li>
+        <li>Cepat Beradaptasi</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- ================= EXPERIENCE TIMELINE ================= -->
+<section id="experience">
+  <h2>Perjalanan Karier</h2>
+  <p class="subtitle">Rekam jejak pengalaman kerja dari awal karier hingga saat ini.</p>
+
+  <div class="timeline">
+
+    <div class="tl-item">
+      <div class="period">Mei 2026 – Sekarang</div>
+      <h3>IT Operations Staff</h3>
+      <div class="place">PT Maju Mapan YIC</div>
+      <p>Menangani infrastruktur IT, instalasi perangkat, troubleshooting user, monitoring jaringan, dan mendukung proyek IT pada area Central Kitchen / pabrik.</p>
+    </div>
+
+    <div class="tl-item">
+      <div class="period">2025 – 2026</div>
+      <h3>Staff Replenishment</h3>
+      <div class="place">Abacus Cash Solution</div>
+      <p>Menangani operasional pengisian kas ATM, pencatatan transaksi, dan pemastian perangkat pendukung berfungsi dengan baik.</p>
+    </div>
+
+    <div class="tl-item">
+      <div class="period">2021 – 2025</div>
+      <h3>Staff Field Technician</h3>
+      <div class="place">Biznet Network</div>
+      <p>Instalasi, pemeliharaan, dan penanganan gangguan jaringan pelanggan, serta koordinasi dengan tim pusat untuk menjaga stabilitas layanan.</p>
+    </div>
+
+    <div class="tl-item">
+      <div class="period">2018 – 2020</div>
+      <h3>Cleaning Service</h3>
+      <div class="place">ISS</div>
+      <p>Menjaga kebersihan dan kerapihan area kerja serta mematuhi standar K3 di lingkungan perusahaan.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section id="contact">
+  <h2>Kontak</h2>
+  <p class="subtitle">Silakan hubungi saya untuk kolaborasi atau peluang kerja sama.</p>
+
+  <div class="contact-grid">
+    <a href="mailto:septian.veqir@gmail.com" class="contact-card">
+      <div class="ic">✉️</div>
+      <div>
+        <div class="lbl">Email</div>
+        <div class="val">septian.veqir@gmail.com</div>
+      </div>
+    </a>
+
+    <a href="tel:+6281387576167" class="contact-card">
+      <div class="ic">📱</div>
+      <div>
+        <div class="lbl">Telepon</div>
+        <div class="val">+62 813-8757-6167</div>
+      </div>
+    </a>
+
+    <a href="#" class="contact-card">
+      <div class="ic">📍</div>
+      <div>
+        <div class="lbl">Lokasi</div>
+        <div class="val">Jakarta, Indonesia</div>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  &copy; 2026 Muhammad Septian · Portfolio dibuat dengan HTML & CSS
+</footer>
+
+</body>
+</html>
